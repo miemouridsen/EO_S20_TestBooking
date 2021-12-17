@@ -29,6 +29,6 @@ namespace EO_S20_TestBooking.Models
 
     public class AppointmentConfirmationPageModel
     {
-        public Appointment Appointment { get; set; }
+        public Appointment Appointment { get; set; } = new Appointment();
     }
 }

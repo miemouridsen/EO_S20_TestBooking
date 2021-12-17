@@ -22,7 +22,7 @@
                 <tr>
                     <td>@availableTime.ToShortTimeString()</td>
                     <td>
-                        <input id="timeButton" asp-route-time="availableTime" asp-action="Confirmation" asp-controller="Booking" type="submit" value="Continue" class="button" />
+                        <input id="timeButton" asp-route-timeofappointment="@availableTime.ToString()" asp-action="Confirmation" asp-controller="Booking" type="submit" value="Continue" class="button" />
                     </td>   
                 </tr>
             }

@@ -50,13 +50,13 @@ namespace EO_S20_TestBooking.Controllers
             return View(model);
         }
 
-        public IActionResult Confirmation(DateTime time, AppointmentConfirmationPageModel model)
+        public IActionResult Confirmation(string timeOfAppointment, AppointmentConfirmationPageModel model)
         {
             model.Appointment.Id = Guid.NewGuid();
             model.Appointment.LocationId = Guid.NewGuid();
             
             // If argument exception, pass string and parse to date
-            model.Appointment.Date = time;
+            model.Appointment.Date = DateTime.Parse(timeOfAppointment);
             
             return View(model);
         }
