@@ -1,0 +1,25 @@
+﻿@model EO_S20_TestBooking.Models.LocationPageModel
+
+@{
+    ViewData["Title"] = "TestCenters";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>TestCenters</h2>
+<a asp-action="Index" asp-controller="Home" class="button">Cancel booking</a>
+<table>
+    <tr>
+        <th>Addresses of test centers:</th>
+    </tr>
+    @foreach (Location loc in Model.Locations)
+    {
+        <tr>
+            <td>@loc.Address</td>
+            <td>
+                <form method="get">
+                    <input asp-action="AvailableTimes" asp-controller="Booking" asp-route-id="@loc.Id" type="submit" value="Choose"/>
+                </form>
+            </td>
+        </tr>
+    }
+</table>

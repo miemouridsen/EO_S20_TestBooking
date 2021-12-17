@@ -1,0 +1,37 @@
+﻿@model EO_S20_TestBooking.Models.AppointmentPageModel
+
+
+@{
+    ViewData["Title"] = "Time";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Date and time</h2>
+<a asp-action="Index" asp-controller="Home" class="button">Cancel booking</a>
+
+<form method="post">
+    <input class="form-control" asp-for="Date" type="date" title="Choose a date" value="2021-12-17" required />
+    <input id="dateButton" type="button" value="Continue" class="button" />
+    <input id="dateButton2" asp-action="AvailableTimes" asp-controller="Booking" type="submit" value="Choose new date" class="button" />
+    <div id="times">
+        <table>
+            <tr>
+                <th>Available times:</th>
+            </tr>
+            @foreach (DateTime date in Model.AvailableTimes)
+            {
+                <tr>
+                    <td>@date.ToShortTimeString()</td>
+                    <td>
+                        @{
+                            var Time = new DateTime();
+                            Time.AddHours(date.Hour);
+                            Time.AddMinutes(date.Minute);
+                        }
+                        <input id="timeButton" asp-action="Confirmation" asp-controller="Booking" type="submit" value="Continue" class="button" />
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</form>
