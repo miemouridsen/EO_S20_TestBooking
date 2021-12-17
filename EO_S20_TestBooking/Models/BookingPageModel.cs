@@ -21,7 +21,7 @@ namespace EO_S20_TestBooking.Models
     public class AppointmentPageModel
     {
         [BindProperty, DataType(DataType.Date)]
-        public DateTime Date { get; set; }
+        public DateTime Date { get; set; } = DateTime.Now;
         [BindProperty, DataType(DataType.Time)]
         public DateTime Time { get; set; }
         public List<DateTime> AvailableTimes { get; set; }
