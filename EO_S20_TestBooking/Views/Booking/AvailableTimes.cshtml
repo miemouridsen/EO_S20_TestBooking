@@ -1,4 +1,5 @@
-﻿@model EO_S20_TestBooking.Models.AppointmentPageModel
+﻿@using System.Globalization
+@model EO_S20_TestBooking.Models.AppointmentPageModel
 
 
 @{
@@ -18,16 +19,17 @@
             <tr>
                 <th>Available times:</th>
             </tr>
-            @foreach (DateTime date in Model.AvailableTimes)
+            @foreach (var availableTime in Model.AvailableTimes.Where(availableTime => Model.Date.Date == availableTime.Date))
             {
                 <tr>
-                    <td>@date.ToShortTimeString()</td>
+                    <td>@availableTime.ToString(CultureInfo.InvariantCulture)</td>
+                    <td>@availableTime.ToShortTimeString()</td>
                     <td>
                         @{
                             var Time = new DateTime();
-                            Time.AddHours(date.Hour);
-                            Time.AddMinutes(date.Minute);
-                        }
+                            Time.AddHours(availableTime.Hour);
+                            Time.AddMinutes(availableTime.Minute);
+                        } 
                         <input id="timeButton" asp-action="Confirmation" asp-controller="Booking" type="submit" value="Continue" class="button" />
                     </td>
                 </tr>
