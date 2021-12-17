@@ -1,0 +1,26 @@
+﻿<Window x:Class="EO_S20_TestSamples.Views.TestCenter"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EO_S20_TestSamples.Views"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        mc:Ignorable="d"
+        Title="TestCenter" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="HomeBtn" Content="Home page" HorizontalAlignment="Left" Margin="631,345,0,0" VerticalAlignment="Top" Width="141" Height="42" FontSize="24" Background="#FF34C1AD" Foreground="White" BorderBrush="#FF34C1AD" Command="{Binding HomePageCommand}"/>
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="377" VerticalAlignment="Top" Width="600" Margin="10,10,0,0" ItemsSource="{Binding Patients}" AutoGenerateColumns="False" IsReadOnly="True" SelectedIndex="{Binding CurrentPatient}">
+            <DataGrid.InputBindings>
+                <MouseBinding Gesture="LeftDoubleClick" Command="{Binding SetPatientStatusCommand}"/>
+            </DataGrid.InputBindings>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="150"/>
+                <DataGridTextColumn Header="SSN" Binding="{Binding Ssn}" Width="150"/>
+                <DataGridTextColumn Header="Date" Binding="{Binding Date}" Width="150"/>
+                <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="150"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="LoadFileBtn" Content="Load list of patients" HorizontalAlignment="Left" Margin="631,10,0,0" VerticalAlignment="Top" Width="141" Height="42" FontSize="16" Background="#FFC13434" Foreground="White" BorderBrush="#FFC13434" Command="{Binding LoadPatientsCommand}"/>
+        <Button x:Name="SaveBtn" Content="Print result" HorizontalAlignment="Left" Margin="631,72,0,0" VerticalAlignment="Top" Width="141" Height="42" FontSize="16" Background="#FFC13434" Foreground="White" BorderBrush="#FFC13434" Command="{Binding SaveCommand}"/>
+    </Grid>
+</Window>

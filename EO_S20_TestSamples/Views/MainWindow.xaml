@@ -1,0 +1,17 @@
+﻿<Window x:Class="EO_S20_TestSamples.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:prism="http://prismlibrary.com/"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        Title="{Binding Title}" Height="450" Width="800" >
+    <Grid>
+        <ContentControl prism:RegionManager.RegionName="ContentRegion" />
+        <Button x:Name="TestCenterBtn" Content="Test Center" HorizontalAlignment="Left" Margin="37,42,0,0" VerticalAlignment="Top" Width="473" Height="140" FontSize="72" Background="#FF34C1AD" Foreground="White" Command="{Binding TestCenterCommand}"/>
+        <Button x:Name="LabBtn" Content="Laboratory" HorizontalAlignment="Left" Margin="280,237,0,0" VerticalAlignment="Top" Width="473" Height="140" FontSize="72" Background="Black" Foreground="White" Command="{Binding LabCommand}"/>
+
+        <Image HorizontalAlignment="Left"  Name="LabIcon" Height="140" Margin="80,237,0,0" 
+        VerticalAlignment="Top" Width="138" Source="/Images/LabIcon.png" RenderTransformOrigin="0.92,0.544"/>
+        <Image HorizontalAlignment="Left"  Name="TestIcon" Height="140" Margin="562,42,0,0" 
+        VerticalAlignment="Top" Width="143" Source="/Images/TestCenterIcon.png"/>
+    </Grid>
+</Window>
