@@ -11,12 +11,10 @@ namespace EO_S20_TestBooking.Controllers
 {
     public class BookingController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
         private readonly IBookingService _bookingService;
 
-        public BookingController(ILogger<HomeController> logger, IBookingService bookingService)
+        public BookingController(IBookingService bookingService)
         {
-            _logger = logger;
             _bookingService = bookingService;
         }
         public IActionResult Index()
@@ -32,7 +30,7 @@ namespace EO_S20_TestBooking.Controllers
             return View(model);
         }
 
-        public async Task<IActionResult> AvailableTimes(Guid id, AppointmentPageModel model)
+        public async Task<IActionResult> AvailableTimes(Guid id, AvailableTimesPageModel model)
         {
             List<Appointment> appointments = await _bookingService.GetAppointments(id);
             Location location = await _bookingService.GetLocation(id);
@@ -52,11 +50,13 @@ namespace EO_S20_TestBooking.Controllers
             return View(model);
         }
 
-        public IActionResult Confirmation(SsnPageModel ssnModel, LocationPageModel locModel, AppointmentPageModel appModel, ConfirmationPageModel model)
+        public IActionResult Confirmation(DateTime time, AppointmentConfirmationPageModel model)
         {
             model.Appointment.Id = Guid.NewGuid();
             model.Appointment.LocationId = Guid.NewGuid();
-            model.Appointment.Date = new DateTime(appModel.Date.Year, appModel.Date.Month, appModel.Date.Day, 0, 0, 0);
+            
+            // If argument exception, pass string and parse to date
+            model.Appointment.Date = time;
             
             return View(model);
         }
