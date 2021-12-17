@@ -18,7 +18,7 @@ namespace EO_S20_TestBooking.Models
         public List<Location> Locations { get; set; }
     }
 
-    public class AppointmentPageModel
+    public class AvailableTimesPageModel
     {
         [BindProperty, DataType(DataType.Date)]
         public DateTime Date { get; set; } = DateTime.Now;
@@ -27,8 +27,8 @@ namespace EO_S20_TestBooking.Models
         public List<DateTime> AvailableTimes { get; set; }
     }
 
-    public class ConfirmationPageModel
+    public class AppointmentConfirmationPageModel
     {
-        public Appointment Appointment { get; set; }
+        public Appointment Appointment { get; set; } = new Appointment();
     }
 }

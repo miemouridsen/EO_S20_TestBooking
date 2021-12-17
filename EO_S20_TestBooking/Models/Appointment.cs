@@ -20,6 +20,6 @@ namespace EO_S20_TestBooking.Models
 
         public bool AppointmentIsValid => Date < DateTime.Now;
         public bool LocationIsValid => Location?.Address is not null;
-        public bool SsnIsValid => Ssn.Length == 12;
+        public bool SsnIsValid => Ssn?.Length == 12;
     }
 }
