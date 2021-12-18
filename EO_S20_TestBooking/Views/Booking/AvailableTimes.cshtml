@@ -18,11 +18,9 @@
             @foreach (var availableTime in Model.AvailableTimes.Where(availableTime => Model.Date.Date == availableTime.Date))
             {
                 <tr>
-                    <td>@availableTime.ToShortTimeString()</td>
                     <td>
-                        <input id="timeButton" asp-action="Confirmation" asp-controller="Booking" 
-                               asp-route-timeofappointment="@availableTime.ToString()" asp-route-ssn="@Model.Ssn" asp-route-locid="@Model.LocationId" 
-                               type="submit" value="Continue" class="button" />
+                        <input id="timeButton" asp-action="Confirmation" asp-controller="Booking" asp-for="Time"
+                               type="submit" value="@availableTime.ToShortTimeString()" class="button" />
                     </td>   
                 </tr>
             }
