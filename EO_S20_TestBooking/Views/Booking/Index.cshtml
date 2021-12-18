@@ -7,8 +7,8 @@
 
 <h2>Social Security Number:</h2>
 <form method="post">
-    <input class="form-control" asp-for="Ssn" type="number" title="Enter your social security number" required/>
-    <input asp-action="TestCenters" asp-controller="Booking" asp-route-ssn="" type="submit" value="Continue" class="button" />
+    <input class="form-control" asp-for="Ssn" type="text" placeholder="Enter your social security number" title="Enter your social security number" required/>
+    <input asp-action="TestCenters" asp-controller="Booking" asp-route-ssn="@Model?.Ssn" type="submit" value="Continue" class="button" />
 </form>
 
 <a asp-action="Index" asp-controller="Home" class="button">Cancel booking</a>
