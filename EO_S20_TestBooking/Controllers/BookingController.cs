@@ -17,9 +17,9 @@ namespace EO_S20_TestBooking.Controllers
         {
             _bookingService = bookingService;
         }
-        public IActionResult Index()
+        public IActionResult Index(SsnPageModel model)
         {
-            return View();
+            return View(model);
         }
 
         public async Task<IActionResult> TestCenters(string ssn, LocationPageModel model)
