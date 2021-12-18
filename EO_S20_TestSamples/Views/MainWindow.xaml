@@ -15,8 +15,8 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         
-        <Button x:Name="TestCenterBtn" Content="Test Center" HorizontalAlignment="Center" VerticalAlignment="Center" Width="473" Height="140" FontSize="72" Background="#FF34C1AD" Foreground="White" Command="{Binding TestCenterCommand}" Grid.ColumnSpan="2"/>
-        <Button x:Name="LabBtn" Content="Laboratory" HorizontalAlignment="Center" VerticalAlignment="Center" Width="473" Height="140" FontSize="72" Background="Black" Foreground="White" Command="{Binding LabCommand}" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="1" Click="LabBtn_Click"/>
+        <Button x:Name="TestCenterBtn" Content="Test Center" HorizontalAlignment="Center" VerticalAlignment="Center" Width="473" Height="140" FontSize="72" Background="#FF34C1AD" Foreground="White" Command="{Binding TestCenterCommand}" Grid.ColumnSpan="2" />
+        <Button x:Name="LabBtn" Content="Laboratory" HorizontalAlignment="Center" VerticalAlignment="Center" Width="473" Height="140" FontSize="72" Background="Black" Foreground="White" Command="{Binding LabCommand}" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="1"/>
 
         <Image HorizontalAlignment="Left"  Name="LabIcon" Height="140" Margin="80,0,0,0" 
         VerticalAlignment="Center" Width="138" Source="/Images/LabIcon.png" RenderTransformOrigin="0.92,0.544" Grid.Row="1"/>

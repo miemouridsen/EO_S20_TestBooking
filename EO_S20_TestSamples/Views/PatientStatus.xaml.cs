@@ -15,7 +15,7 @@ namespace EO_S20_TestSamples.Views
     /// <summary>
     /// Interaction logic for PatientStatus.xaml
     /// </summary>
-    public partial class PatientStatus : Window
+    public partial class PatientStatus : UserControl
     {
         public PatientStatus()
         {

@@ -15,7 +15,7 @@ namespace EO_S20_TestSamples.Views
     /// <summary>
     /// Interaction logic for TestResults.xaml
     /// </summary>
-    public partial class TestResult : Window
+    public partial class TestResult : UserControl
     {
         public TestResult()
         {

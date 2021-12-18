@@ -1,4 +1,5 @@
-﻿using EO_S20_TestSamples.ViewModels;
+﻿using EO_S20_TestSamples.Models;
+using EO_S20_TestSamples.ViewModels;
 using EO_S20_TestSamples.Views;
 using Prism.Ioc;
 using System.Windows;
@@ -20,5 +21,7 @@ namespace EO_S20_TestSamples
             containerRegistry.RegisterDialog<PatientStatus, PatientStatusViewModel>();
             containerRegistry.RegisterDialog<TestResult, TestResultViewModel>();
         }
+
+        public PatientTest PatientTest { get; set; }
     }
 }

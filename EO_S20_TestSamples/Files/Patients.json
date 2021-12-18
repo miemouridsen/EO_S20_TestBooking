@@ -1,0 +1,37 @@
+[
+  {
+    "Name": "Pedro Pascal",
+    "Ssn": "0909011232",
+    "TestDate": "2021-12-19T23:28:56.782Z"
+  },
+  {
+    "Name": "Conrad Hans",
+    "Ssn": "0156564545",
+    "TestDate": "2021-12-19T23:28:56.772Z"
+  },
+  {
+    "Name": "Lone Hansen",
+    "Ssn": "2365338989",
+    "TestDate": "2021-12-19T23:28:56.762Z"
+  },
+  {
+    "Name": "Jens Jensen",
+    "Ssn": "9090888888",
+    "TestDate": "2021-12-19T23:28:56.752Z"
+  },
+  {
+    "Name": "Ellie bonno",
+    "Ssn": "7537534646",
+    "TestDate": "2021-12-18T23:28:56.782Z"
+  },
+  {
+    "Name": "Joel lykke",
+    "Ssn": "2582581212",
+    "TestDate": "2021-12-18T23:28:56.772Z"
+  },
+  {
+    "Name": "Mette Frede",
+    "Ssn": "4646467412",
+    "TestDate": "2021-12-18T23:28:56.762Z"
+  }
+]

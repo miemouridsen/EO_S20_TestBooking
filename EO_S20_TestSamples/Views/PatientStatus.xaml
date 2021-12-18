@@ -1,4 +1,4 @@
-﻿<Window x:Class="EO_S20_TestSamples.Views.PatientStatus"
+﻿<UserControl x:Class="EO_S20_TestSamples.Views.PatientStatus"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,17 +7,27 @@
         xmlns:prism="http://prismlibrary.com/"
         prism:ViewModelLocator.AutoWireViewModel="True"
         mc:Ignorable="d"
-        Title="PatientStatus" Height="450" Width="800">
-    <Grid Background="White" Margin="0,0,-170,-34">
-        <Button x:Name="TestTakenBtn" Content="Testet" HorizontalAlignment="Left" Margin="44,76,0,0" VerticalAlignment="Top" Width="253" Height="93" FontSize="48" Background="#FF8EFF5A" BorderBrush="#FF8EFF5A" Foreground="White" Command="{Binding TestedCommand}"/>
-        <Button x:Name="TestNotTakenBtn" Content="Udblevet" HorizontalAlignment="Left" Margin="44,198,0,0" VerticalAlignment="Top" Width="280" Height="93" FontSize="48" Foreground="White" Background="#FFFF4646" BorderBrush="#FFFF4646" Command="{Binding NotTestedCommand}"/>
-        <TextBlock x:Name="txtBlockSsn" HorizontalAlignment="Left" Text="{Binding Path=Patient.CPR}" TextWrapping="Wrap" VerticalAlignment="Top" Margin="44,42,0,0" Height="29" Width="253" FontSize="20"/>
-        <TextBlock x:Name="txtBlockName" HorizontalAlignment="Left" Text="{Binding Path=Patient.Name}" TextWrapping="Wrap" VerticalAlignment="Top" Margin="44,13,0,0" Height="29" Width="253" FontSize="20"/>
-        <Button x:Name="ArrowBtn" Content="" HorizontalAlignment="Left" Margin="372,198,0,0" VerticalAlignment="Top" Width="75" Height="93" FontSize="48" Foreground="White" BorderBrush="White" Command="{Binding CloseDialogCommand}">
+        Width="500" Height="320">
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        
+        <Button x:Name="TestTakenBtn" Content="Tested" HorizontalAlignment="Center" VerticalAlignment="Center" Width="250" Height="93" FontSize="48" Background="#FF8EFF5A" BorderBrush="#FF8EFF5A" Foreground="White" Command="{Binding TestedCommand}"/>
+        <Button x:Name="TestNotTakenBtn" Content="Not tested" HorizontalAlignment="Center" VerticalAlignment="Center" Width="250" Height="93" FontSize="48" Foreground="White" Background="#FFFF4646" BorderBrush="#FFFF4646" Command="{Binding NotTestedCommand}" Grid.Row="1"/>
+        
+        <TextBlock x:Name="txtBlockSsn" HorizontalAlignment="Center" Text="{Binding Path=Patient.Ssn}" TextWrapping="Wrap" VerticalAlignment="Top" Height="29" Width="147" FontSize="20" Grid.Column="1" Margin="0,30,0,0"/>
+        <TextBlock x:Name="txtBlockName" HorizontalAlignment="Center" Text="{Binding Path=Patient.Name}" TextWrapping="Wrap" VerticalAlignment="Top" Height="29" Width="147" FontSize="20" Grid.Column="1" Margin="0,94,0,0"/>
+        
+        <Button x:Name="ArrowBtn" Content="" HorizontalAlignment="Left" Margin="22,69,0,0" VerticalAlignment="Top" Width="75" Height="93" FontSize="48" Foreground="White" BorderBrush="White" Command="{Binding CloseDialogCommand}" Grid.Column="1" Grid.Row="1">
             <Button.Background>
-                <ImageBrush ImageSource="/EO_S20_TestSamples;component/Images/arrow.png"/>
+                <ImageBrush ImageSource="/EO_S20_TestSamples;component/Images/Arrow.png"/>
             </Button.Background>
         </Button>
-
     </Grid>
-</Window>
+</UserControl>

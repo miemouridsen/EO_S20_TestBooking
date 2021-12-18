@@ -14,14 +14,14 @@
             <ColumnDefinition Width="7*"/>
         </Grid.ColumnDefinitions>
         
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Center" Height="377" VerticalAlignment="Top" Width="600" Margin="0,10,0,0" ItemsSource="{Binding Patients}" AutoGenerateColumns="False" IsReadOnly="True" SelectedIndex="{Binding CurrentPatient}">
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Center" Height="377" VerticalAlignment="Top" Width="600" Margin="0,10,0,0" ItemsSource="{Binding Patients}" AutoGenerateColumns="False" IsReadOnly="True" SelectedIndex="{Binding CurrentIndex}">
             <DataGrid.InputBindings>
                 <MouseBinding Gesture="LeftDoubleClick" Command="{Binding SetPatientStatusCommand}"/>
             </DataGrid.InputBindings>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="150"/>
                 <DataGridTextColumn Header="SSN" Binding="{Binding Ssn}" Width="150"/>
-                <DataGridTextColumn Header="Date" Binding="{Binding Date}" Width="150"/>
+                <DataGridTextColumn Header="Date" Binding="{Binding TestDate}" Width="150"/>
                 <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="150"/>
             </DataGrid.Columns>
         </DataGrid>

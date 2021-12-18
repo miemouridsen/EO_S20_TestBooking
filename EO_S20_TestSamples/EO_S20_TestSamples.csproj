@@ -6,9 +6,19 @@
     <AssemblyName>EO_S20_TestSamples</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Images\arrow.png" />
+    <None Remove="Images\LabIcon.png" />
+    <None Remove="Images\TestCenterIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Prism.Core" Version="8.1.97" />
     <PackageReference Include="Prism.DryIoc" Version="8.0.0.1909" />
     <PackageReference Include="Prism.Wpf" Version="8.1.97" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Arrow.png" />
+    <Resource Include="Images\LabIcon.png" />
+    <Resource Include="Images\TestCenterIcon.png" />
   </ItemGroup>
 </Project>

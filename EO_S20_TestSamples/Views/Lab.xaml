@@ -14,18 +14,19 @@
             <ColumnDefinition Width="7*"/>
         </Grid.ColumnDefinitions>
         
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Center" Height="377" VerticalAlignment="Top" Width="600" Margin="0,10,0,0" ItemsSource="{Binding Patients}" AutoGenerateColumns="False" IsReadOnly="True" SelectedIndex="{Binding CurrentPatient}">
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Center" Height="377" VerticalAlignment="Top" Width="600" Margin="0,10,0,0" ItemsSource="{Binding Tests}" AutoGenerateColumns="False" IsReadOnly="True" SelectedIndex="{Binding CurrentIndex}">
             <DataGrid.InputBindings>
-                <MouseBinding Gesture="LeftDoubleClick" Command="{Binding SetPatientStatusCommand}"/>
+                <MouseBinding Gesture="LeftDoubleClick" Command="{Binding SetTestResultCommand}"/>
             </DataGrid.InputBindings>
             <DataGrid.Columns>
-                <DataGridTextColumn Header="SSN" Binding="{Binding Ssn}" Width="200"/>
-                <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="200"/>
-                <DataGridTextColumn Header="Result" Binding="{Binding Result}" Width="200"/>
+                <DataGridTextColumn Header="SSN" Binding="{Binding Ssn}" Width="150"/>
+                <DataGridTextColumn Header="Guid" Binding="{Binding Guid}" Width="150"/>
+                <DataGridTextColumn Header="Date" Binding="{Binding ResultDate}" Width="150"/>
+                <DataGridTextColumn Header="Result" Binding="{Binding Result}" Width="150"/>
             </DataGrid.Columns>
         </DataGrid>
         
-        <Button x:Name="LoadBtn" Content="Load test file" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="141" Height="42" FontSize="16" Background="#FFC13434" Foreground="White" BorderBrush="#FFC13434" Command="{Binding LoadPatientsCommand}" Grid.Column="1"/>
+        <Button x:Name="LoadBtn" Content="Load test file" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="141" Height="42" FontSize="16" Background="#FFC13434" Foreground="White" BorderBrush="#FFC13434" Command="{Binding LoadTestsCommand}" Grid.Column="1"/>
         <Button x:Name="SaveBtn" Content="Print result" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Width="141" Height="42" FontSize="16" Background="#FFC13434" Foreground="White" BorderBrush="#FFC13434" Command="{Binding SaveCommand}" Grid.Column="1"/>
         <Button x:Name="HomeBtn" Content="Home page" HorizontalAlignment="Left" Margin="10,345,0,0" VerticalAlignment="Top" Width="141" Height="42" FontSize="20" Background="#FF34C1AD" Foreground="White" BorderBrush="#FF34C1AD" Command="{Binding HomePageCommand}" Grid.Column="1"/>
     </Grid>

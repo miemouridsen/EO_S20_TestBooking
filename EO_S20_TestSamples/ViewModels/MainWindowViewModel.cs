@@ -43,8 +43,7 @@ namespace EO_S20_TestSamples.ViewModels
             //Show view
             labInstance.Show();
             //Close current view
-            App.Current.MainWindow.Close();
-            //App.Current.Windows[0].Close();
+            App.Current.Windows[0].Close();
         }
     }
 }
