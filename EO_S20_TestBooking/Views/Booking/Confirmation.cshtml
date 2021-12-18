@@ -1,7 +1,31 @@
 ﻿@model EO_S20_TestBooking.Models.AppointmentConfirmationPageModel
-
 @{
-    ViewData["Title"] = "Confirmation";
+    ViewData["Title"] = "Appointment Confirmation";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<h2>Confirmation of booking</h2>
+<form method="post">
+    <table>
+        <tr>
+            <th>Social security number:</th>
+            <td>@Model.Appointment.Ssn</td>
+        </tr>
+        <tr>
+            <th>Date and time:</th>
+            <td>@Model.Appointment.Date.ToString()</td>
+        </tr>
+        <tr>
+            <th>Address of test center:</th>
+            <td>@Model.Appointment.Location.Address</td>
+        </tr>
+    </table>
+    <input asp-action="Redirection" asp-controller="Booking" 
+           asp-route-ssn="@Model.Appointment.Ssn"
+           asp-route-timeofappointment="@Model.Appointment.Date.ToString()"
+           asp-route-locid="@Model.Appointment.LocationId" 
+           type="submit" value="Confirm" class="button" />
+</form>
+
+<a asp-action="Index" asp-controller="Home" class="button">Cancel booking</a>
 

@@ -10,7 +10,7 @@ namespace EO_S20_TestBooking.Services
 {
     public interface IBookingService
     {
-        Task MakeAppointment(Appointment appointment);
+        Task<int> MakeAppointment(Appointment appointment);
         Task<List<Appointment>> GetAllAppointments();
         Task<List<Location>> GetAllLocations();
         Task<List<Appointment>> GetAppointments(Guid id);
@@ -26,15 +26,15 @@ namespace EO_S20_TestBooking.Services
             _context = context;
         }
 
-        public async Task MakeAppointment(Appointment appointment)
+        public async Task<int> MakeAppointment(Appointment appointment)
         {
-            if (appointment == null) throw new ArgumentNullException(nameof(appointment));
-            if (appointment.AppointmentIsValid) throw new ArgumentOutOfRangeException(nameof(appointment.Date));
-            if (appointment.LocationIsValid) throw new ArgumentException("Location is not valid");
-            if (appointment.SsnIsValid) throw new ArgumentException("SSN is not valid");
+            //if (appointment == null) throw new ArgumentNullException(nameof(appointment));
+            //if (appointment.AppointmentIsValid) throw new ArgumentOutOfRangeException(nameof(appointment.Date));
+            //if (appointment.LocationIsValid) throw new ArgumentException("Location is not valid");
+            //if (appointment.SsnIsValid) throw new ArgumentException("SSN is not valid");
 
             await _context.Appointments.AddAsync(appointment);
-            await _context.SaveChangesAsync();
+            return await _context.SaveChangesAsync();
         }
 
         public async Task<List<Appointment>> GetAllAppointments()

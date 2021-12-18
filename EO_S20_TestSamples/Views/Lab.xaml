@@ -4,22 +4,29 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EO_S20_TestSamples.Views"
+        xmlns:prism="http://prismlibrary.com/"
         prism:ViewModelLocator.AutoWireViewModel="True"
         mc:Ignorable="d"
-        Title="Lab" Height="450" Width="800">
+        Title="Laboratory" Height="450" Width="800">
     <Grid>
-        <Button x:Name="LoadBtn" Content="Load file from test center" HorizontalAlignment="Left" Margin="579,10,0,0" VerticalAlignment="Top" Width="203" Height="52" FontSize="18" Background="#FFFF4848" Foreground="White" BorderBrush="White" Command="{Binding LoadPatientsCommand}"/>
-        <Button x:Name="SaveFileBtn" Content="Print result" HorizontalAlignment="Left" Margin="579,75,0,0" VerticalAlignment="Top" Width="203" Height="52" FontSize="18" BorderBrush="#FFFF4848" Foreground="White" Background="#FFFF4848" Command="{Binding SaveCommand}"/>
-        <Button x:Name="HomeBtn" Content="Home page" HorizontalAlignment="Left" Margin="579,357,0,0" VerticalAlignment="Top" Width="203" Height="52" FontSize="18" BorderBrush="#FFFF4848" Foreground="White" Background="#FFFF4848" Command="{Binding HomePageCommand}"/>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="399" VerticalAlignment="Top" Width="556" Margin="10,10,0,0" ItemsSource="{Binding Patients}"  AutoGenerateColumns="False" IsReadOnly="True" SelectedIndex="{Binding CurrentPatient}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="7*"/>
+        </Grid.ColumnDefinitions>
+        
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Center" Height="377" VerticalAlignment="Top" Width="600" Margin="0,10,0,0" ItemsSource="{Binding Patients}" AutoGenerateColumns="False" IsReadOnly="True" SelectedIndex="{Binding CurrentPatient}">
             <DataGrid.InputBindings>
-                <MouseBinding Gesture="LeftDoubleClick" Command="{Binding SetTestResultCommand}"/>
+                <MouseBinding Gesture="LeftDoubleClick" Command="{Binding SetPatientStatusCommand}"/>
             </DataGrid.InputBindings>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="SSN" Binding="{Binding Ssn}" Width="200"/>
                 <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="200"/>
-                <DataGridTextColumn Header="Result" Binding="{Binding Result}" Width="156"/>
+                <DataGridTextColumn Header="Result" Binding="{Binding Result}" Width="200"/>
             </DataGrid.Columns>
         </DataGrid>
+        
+        <Button x:Name="LoadBtn" Content="Load test file" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="141" Height="42" FontSize="16" Background="#FFC13434" Foreground="White" BorderBrush="#FFC13434" Command="{Binding LoadPatientsCommand}" Grid.Column="1"/>
+        <Button x:Name="SaveBtn" Content="Print result" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Width="141" Height="42" FontSize="16" Background="#FFC13434" Foreground="White" BorderBrush="#FFC13434" Command="{Binding SaveCommand}" Grid.Column="1"/>
+        <Button x:Name="HomeBtn" Content="Home page" HorizontalAlignment="Left" Margin="10,345,0,0" VerticalAlignment="Top" Width="141" Height="42" FontSize="20" Background="#FF34C1AD" Foreground="White" BorderBrush="#FF34C1AD" Command="{Binding HomePageCommand}" Grid.Column="1"/>
     </Grid>
 </Window>

@@ -1,14 +1,14 @@
 ﻿@model EO_S20_TestBooking.Models.SsnPageModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Index - SSN";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Social Security Number:</h2>
 <form method="post">
     <input class="form-control" asp-for="Ssn" type="number" title="Enter your social security number" required/>
-    <input asp-action="TestCenters" asp-controller="Booking" type="submit" value="Continue" class="button" />
+    <input asp-action="TestCenters" asp-controller="Booking" asp-route-ssn="" type="submit" value="Continue" class="button" />
 </form>
 
 <a asp-action="Index" asp-controller="Home" class="button">Cancel booking</a>

@@ -22,8 +22,9 @@ namespace EO_S20_TestBooking.Controllers
             return View();
         }
 
-        public async Task<IActionResult> TestCenters(LocationPageModel model)
+        public async Task<IActionResult> TestCenters(string ssn, LocationPageModel model)
         {
+            model.Ssn = ssn;
             List<Location> testCenters = await _bookingService.GetAllLocations();
             model.Locations = testCenters;
 
@@ -32,6 +33,7 @@ namespace EO_S20_TestBooking.Controllers
 
         public async Task<IActionResult> AvailableTimes(Guid id, AvailableTimesPageModel model)
         {
+            model.LocationId = id;
             List<Appointment> appointments = await _bookingService.GetAppointments(id);
             Location location = await _bookingService.GetLocation(id);
             List<DateTime> availableTimes = location.AvailableTimes.ToList();
@@ -50,15 +52,28 @@ namespace EO_S20_TestBooking.Controllers
             return View(model);
         }
 
-        public IActionResult Confirmation(string timeOfAppointment, AppointmentConfirmationPageModel model)
+        public async Task<IActionResult> Confirmation(string timeOfAppointment, Guid locId, AppointmentConfirmationPageModel model, string ssn = "8888888888")
         {
-            model.Appointment.Id = Guid.NewGuid();
-            model.Appointment.LocationId = Guid.NewGuid();
-            
+            //model.Appointment.Id = Guid.NewGuid();
+            model.Appointment.Ssn = ssn;
+            model.Appointment.LocationId = locId;
+            model.Appointment.Location = await _bookingService.GetLocation(locId);
             // If argument exception, pass string and parse to date
             model.Appointment.Date = DateTime.Parse(timeOfAppointment);
             
             return View(model);
+        }
+
+        public async Task<IActionResult> Redirection(string ssn, Guid locId, string timeOfAppointment)
+        {
+            var appointment = new Appointment();
+            appointment.Id = Guid.NewGuid();
+            appointment.Ssn = ssn;
+            appointment.LocationId = locId;
+            // If argument exception, pass string and parse to date
+            appointment.Date = DateTime.Parse(timeOfAppointment);
+            int i = await _bookingService.MakeAppointment(appointment);
+            return Redirect("/Home/Index");
         }
     }
 }

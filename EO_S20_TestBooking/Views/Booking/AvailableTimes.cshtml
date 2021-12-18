@@ -1,8 +1,6 @@
 ﻿@model EO_S20_TestBooking.Models.AvailableTimesPageModel
-
-
 @{
-    ViewData["Title"] = "Time";
+    ViewData["Title"] = "Available Times";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -22,7 +20,9 @@
                 <tr>
                     <td>@availableTime.ToShortTimeString()</td>
                     <td>
-                        <input id="timeButton" asp-route-timeofappointment="@availableTime.ToString()" asp-action="Confirmation" asp-controller="Booking" type="submit" value="Continue" class="button" />
+                        <input id="timeButton" asp-action="Confirmation" asp-controller="Booking" 
+                               asp-route-timeofappointment="@availableTime.ToString()" asp-route-ssn="@Model.Ssn" asp-route-locid="@Model.LocationId" 
+                               type="submit" value="Continue" class="button" />
                     </td>   
                 </tr>
             }

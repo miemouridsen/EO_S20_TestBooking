@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -17,9 +18,10 @@ namespace EO_S20_TestBooking.Models
         [Required]
         public Guid LocationId { get; set; }
         public Location Location { get; set; }
-
+        [NotMapped]
         public bool AppointmentIsValid => Date < DateTime.Now;
-        public bool LocationIsValid => Location?.Address is not null;
-        public bool SsnIsValid => Ssn?.Length == 12;
+        //public bool LocationIsValid => Location?.Address is not null;
+        [NotMapped]
+        public bool SsnIsValid => Ssn?.Length == 10;
     }
 }

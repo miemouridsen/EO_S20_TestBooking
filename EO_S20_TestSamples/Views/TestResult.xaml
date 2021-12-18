@@ -4,13 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EO_S20_TestSamples.Views"
+        xmlns:prism="http://prismlibrary.com/"
         prism:ViewModelLocator.AutoWireViewModel="True"
         mc:Ignorable="d"
         Title="TestResult" Height="450" Width="800">
     <Grid>
-        <Button x:Name="NegativBtn" Content="Negative test" HorizontalAlignment="Left" Margin="55,58,0,0" VerticalAlignment="Top" Width="233" Height="87" FontSize="24" Background="#FF34FF90" BorderBrush="White" Foreground="White" Command="{Binding NegativeCommand}"/>
-        <Button x:Name="PositivBtn" Content="Positive Test" HorizontalAlignment="Left" Margin="55,173,0,0" VerticalAlignment="Top" Width="233" Height="87" FontSize="24" Background="#FFFF674F" BorderBrush="White" Foreground="White" Command="{Binding PositiveCommand}"/>
-        <Button x:Name="ErrorBtn" Content="Invalid" HorizontalAlignment="Left" Margin="55,286,0,0" VerticalAlignment="Top" Width="233" Height="87" FontSize="24" Foreground="White" Background="#FF92A1FF" BorderBrush="White" Command="{Binding UnknownCommand}"/>
+        <Button x:Name="NegBtn" Content="Negative test" HorizontalAlignment="Left" Margin="55,58,0,0" VerticalAlignment="Top" Width="233" Height="87" FontSize="24" Background="#FF34FF90" BorderBrush="White" Foreground="White" Command="{Binding NegativeCommand}"/>
+        <Button x:Name="PosBtn" Content="Positive test" HorizontalAlignment="Left" Margin="55,173,0,0" VerticalAlignment="Top" Width="233" Height="87" FontSize="24" Background="#FFFF674F" BorderBrush="White" Foreground="White" Command="{Binding PositiveCommand}"/>
+        <Button x:Name="InvBtn" Content="Invalid" HorizontalAlignment="Left" Margin="55,286,0,0" VerticalAlignment="Top" Width="233" Height="87" FontSize="24" Foreground="White" Background="#FF92A1FF" BorderBrush="White" Command="{Binding UnknownCommand}"/>
         <Button x:Name="ArrowBtn" Content="" HorizontalAlignment="Left" Margin="133,383,0,0" VerticalAlignment="Top" Width="75" Height="67" FontSize="48" Foreground="White" BorderBrush="White" Command="{Binding CloseDialogCommand}">
             <Button.Background>
                 <ImageBrush ImageSource="/EO_S20_TestSamples;component/Images/arrow.png"/>

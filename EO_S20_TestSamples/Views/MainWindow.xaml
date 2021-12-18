@@ -5,13 +5,22 @@
         prism:ViewModelLocator.AutoWireViewModel="True"
         Title="{Binding Title}" Height="450" Width="800" >
     <Grid>
-        <ContentControl prism:RegionManager.RegionName="ContentRegion" />
-        <Button x:Name="TestCenterBtn" Content="Test Center" HorizontalAlignment="Left" Margin="37,42,0,0" VerticalAlignment="Top" Width="473" Height="140" FontSize="72" Background="#FF34C1AD" Foreground="White" Command="{Binding TestCenterCommand}"/>
-        <Button x:Name="LabBtn" Content="Laboratory" HorizontalAlignment="Left" Margin="280,237,0,0" VerticalAlignment="Top" Width="473" Height="140" FontSize="72" Background="Black" Foreground="White" Command="{Binding LabCommand}"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="48*"/>
+            <ColumnDefinition Width="65*"/>
+            <ColumnDefinition Width="48*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        
+        <Button x:Name="TestCenterBtn" Content="Test Center" HorizontalAlignment="Center" VerticalAlignment="Center" Width="473" Height="140" FontSize="72" Background="#FF34C1AD" Foreground="White" Command="{Binding TestCenterCommand}" Grid.ColumnSpan="2"/>
+        <Button x:Name="LabBtn" Content="Laboratory" HorizontalAlignment="Center" VerticalAlignment="Center" Width="473" Height="140" FontSize="72" Background="Black" Foreground="White" Command="{Binding LabCommand}" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="1" Click="LabBtn_Click"/>
 
-        <Image HorizontalAlignment="Left"  Name="LabIcon" Height="140" Margin="80,237,0,0" 
-        VerticalAlignment="Top" Width="138" Source="/Images/LabIcon.png" RenderTransformOrigin="0.92,0.544"/>
-        <Image HorizontalAlignment="Left"  Name="TestIcon" Height="140" Margin="562,42,0,0" 
-        VerticalAlignment="Top" Width="143" Source="/Images/TestCenterIcon.png"/>
+        <Image HorizontalAlignment="Left"  Name="LabIcon" Height="140" Margin="80,0,0,0" 
+        VerticalAlignment="Center" Width="138" Source="/Images/LabIcon.png" RenderTransformOrigin="0.92,0.544" Grid.Row="1"/>
+        <Image HorizontalAlignment="Right"  Name="TestIcon" Height="140" Margin="0,0,80,0" 
+        VerticalAlignment="Center" Width="143" Source="/Images/TestCenterIcon.png" Grid.Column="2"/>
     </Grid>
 </Window>

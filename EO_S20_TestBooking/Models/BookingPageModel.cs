@@ -7,23 +7,28 @@ using System.ComponentModel.DataAnnotations;
 
 namespace EO_S20_TestBooking.Models
 {
-    public class SsnPageModel : PageModel
+    public class SsnPageModel/* : PageModel*/
     {
         [BindProperty]
-        public string Ssn { get; set; }
+        public string Ssn { get; set; } = "0000000000";
     }
 
     public class LocationPageModel
     {
+        public string Ssn { get; set; }
         public List<Location> Locations { get; set; }
     }
 
     public class AvailableTimesPageModel
     {
+        public string Ssn { get; set; }
+        public Guid LocationId { get; set; }
+
         [BindProperty, DataType(DataType.Date)]
         public DateTime Date { get; set; } = DateTime.Now;
-        [BindProperty, DataType(DataType.Time)]
-        public DateTime Time { get; set; }
+
+        //[BindProperty, DataType(DataType.Time)]
+        //public DateTime Time { get; set; }
         public List<DateTime> AvailableTimes { get; set; }
     }
 
