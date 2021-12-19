@@ -20,7 +20,7 @@
                 <tr>
                     <td>
                         <input id="timeButton" asp-action="Confirmation" asp-controller="Booking"
-                               asp-route-id="@Model.LocationId" asp-route-ssn="@Model.Ssn" asp-route-date="@availableTime.ToString()"
+                               asp-route-id="@Model.SelectedLocationId" asp-route-ssn="@Model.Ssn" asp-route-date="@availableTime.ToString()"
                                type="submit" value="@availableTime.ToShortTimeString()" class="button" />
                     </td>   
                 </tr>

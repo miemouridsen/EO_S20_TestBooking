@@ -22,22 +22,24 @@ namespace EO_S20_TestBooking.Controllers
             return View(model);
         }
 
-        public async Task<IActionResult> TestCenters(string ssn, LocationPageModel model)
+        public async Task<IActionResult> TestCenters(LocationPageModel model)
         {
-            model.Ssn = ssn;
             List<Location> testCenters = await _bookingService.GetAllLocations();
             model.Locations = testCenters;
 
             return View(model);
         }
 
-        //SSN er null her af en eller anden grund
-        public async Task<IActionResult> AvailableTimes(string ssn, Guid id, AvailableTimesPageModel model)
+        // Consider GET vs POST
+        // GET for RestFul convention
+        // POST for a messed up convention such as MVC
+        // [HttpGet("Booking/{ssn}")]
+        
+        // TODO: Move location id to hidden input in CSHTML
+        public async Task<IActionResult> AvailableTimes(AvailableTimesPageModel model)
         {
-            model.Ssn = ssn;
-            model.LocationId = id;
-            List<Appointment> appointments = await _bookingService.GetAppointments(id);
-            Location location = await _bookingService.GetLocation(id);
+            List<Appointment> appointments = await _bookingService.GetAppointments(model.SelectedLocationId);
+            Location location = await _bookingService.GetLocation(model.SelectedLocationId);
             List<DateTime> availableTimes = location.AvailableTimes.ToList();
 
             if (appointments.Count > 0)

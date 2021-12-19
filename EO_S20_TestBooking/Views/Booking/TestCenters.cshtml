@@ -16,11 +16,10 @@
         <tr>
             <td>@loc.Address</td>
             <td>
-                <form method="get">
-                    <input asp-action="AvailableTimes" asp-controller="Booking"
-                           asp-route-ssn="@Model.Ssn"
-                           asp-route-id="@loc.Id" 
-                           type="submit" value="Choose"/>
+                <form method="post">
+                    <input asp-action="AvailableTimes" asp-controller="Booking" type="submit" value="Choose"/>
+                    <input asp-for="Ssn" type="hidden" />
+                    <input asp-for="SelectedLocationId" type="hidden" value="@loc.Id" />
                 </form>
             </td>
         </tr>
