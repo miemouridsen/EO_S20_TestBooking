@@ -17,9 +17,9 @@ namespace EO_S20_TestBooking.Controllers
         {
             _bookingService = bookingService;
         }
-        public IActionResult Index(SsnPageModel model)
+        public IActionResult Index()
         {
-            return View(model);
+            return View();
         }
 
         public async Task<IActionResult> TestCenters(LocationPageModel model)
@@ -35,7 +35,6 @@ namespace EO_S20_TestBooking.Controllers
         // POST for a messed up convention such as MVC
         // [HttpGet("Booking/{ssn}")]
         
-        // TODO: Move location id to hidden input in CSHTML
         public async Task<IActionResult> AvailableTimes(AvailableTimesPageModel model)
         {
             List<Appointment> appointments = await _bookingService.GetAppointments(model.SelectedLocationId);
@@ -56,23 +55,21 @@ namespace EO_S20_TestBooking.Controllers
             return View(model);
         }
 
-        public async Task<IActionResult> Confirmation(string ssn, Guid id, string date, AppointmentConfirmationPageModel model)
+        public async Task<IActionResult> Confirmation(AppointmentPageModel model)
         {
-            model.Appointment.Ssn = ssn;
-            model.Appointment.Location = await _bookingService.GetLocation(id);
-            model.Appointment.Date = DateTime.Parse(date);
+            model.Location = await _bookingService.GetLocation(model.SelectedLocationId);
             
             return View(model);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Redirection(string ssn, Guid id, string date)
+        public async Task<IActionResult> SaveAppointment(ConfirmationPageModel model)
         {
             var appointment = new Appointment();
             appointment.Id = Guid.NewGuid();
-            appointment.Ssn = ssn;
-            appointment.Date = DateTime.Parse(date);
-            appointment.LocationId = id;
+            appointment.Ssn = model.Ssn;
+            appointment.Date = model.DateTime;
+            appointment.LocationId = model.SelectedLocationId;
             int i = await _bookingService.MakeAppointment(appointment);
 
             return Redirect("/Home/Index");

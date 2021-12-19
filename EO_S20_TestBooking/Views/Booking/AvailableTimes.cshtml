@@ -19,9 +19,10 @@
             {
                 <tr>
                     <td>
-                        <input id="timeButton" asp-action="Confirmation" asp-controller="Booking"
-                               asp-route-id="@Model.SelectedLocationId" asp-route-ssn="@Model.Ssn" asp-route-date="@availableTime.ToString()"
-                               type="submit" value="@availableTime.ToShortTimeString()" class="button" />
+                        <input id="timeButton" asp-action="Confirmation" asp-controller="Booking" type="submit" value="@availableTime.ToShortTimeString()" class="button" />
+                        <input asp-for="SelectedLocationId" type="hidden" />
+                        <input asp-for="Ssn" type="hidden" />
+                        <input asp-for="DateTime" type="hidden" value="@availableTime"/>
                     </td>   
                 </tr>
             }

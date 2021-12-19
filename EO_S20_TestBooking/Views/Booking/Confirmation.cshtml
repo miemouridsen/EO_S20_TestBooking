@@ -1,4 +1,4 @@
-﻿@model EO_S20_TestBooking.Models.AppointmentConfirmationPageModel
+﻿@model EO_S20_TestBooking.Models.AppointmentPageModel
 @{
     ViewData["Title"] = "Appointment Confirmation";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -9,22 +9,22 @@
     <table>
         <tr>
             <th>Social security number:</th>
-            <td>@Model.Appointment.Ssn</td>
+            <td>@Model.Ssn</td>
         </tr>
         <tr>
             <th>Date and time:</th>
-            <td>@Model.Appointment.Date.ToString()</td>
+            <td>@Model.DateTime.ToString()</td>
         </tr>
         <tr>
             <th>Address of test center:</th>
-            <td>@Model.Appointment.Location.Address</td>
+            <td>@Model.Location.Address</td>
         </tr>
     </table>
-    <input asp-action="Redirection" asp-controller="Booking" 
-           asp-route-ssn="@Model.Appointment.Ssn"
-           asp-route-date="@Model.Appointment.Date.ToString()"
-           asp-route-id="@Model.Appointment.LocationId" 
+    <input asp-action="SaveAppointment" asp-controller="Booking"
            type="submit" value="Confirm" class="button" />
+    <input asp-for="SelectedLocationId" type="hidden" />
+    <input asp-for="Ssn" type="hidden" />
+    <input asp-for="DateTime" type="hidden" />
 </form>
 
 <a asp-action="Index" asp-controller="Home" class="button">Cancel booking</a>

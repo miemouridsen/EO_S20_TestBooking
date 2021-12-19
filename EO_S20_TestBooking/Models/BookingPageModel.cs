@@ -8,14 +8,9 @@ using System.Net.Http;
 
 namespace EO_S20_TestBooking.Models
 {
-    public class SsnPageModel
-    {
-        public string Ssn { get; set; }
-    }
-
     public class LocationPageModel
     {
-        public string Ssn { get; set;  }
+        public string Ssn { get; set; }
         public Guid SelectedLocationId { get; set; }
         public List<Location> Locations { get; set; }
     }
@@ -25,11 +20,21 @@ namespace EO_S20_TestBooking.Models
         public string Ssn { get; set; }
         public Guid SelectedLocationId { get; set; }
         public DateTime Date { get; set; } = DateTime.Now;
+
+        public DateTime DateTime { get; set; } = DateTime.Now;
         public List<DateTime> AvailableTimes { get; set; }
     }
-
-    public class AppointmentConfirmationPageModel
+    public class AppointmentPageModel
     {
-        public Appointment Appointment { get; set; } = new Appointment();
+        public string Ssn { get; set; }
+        public Guid SelectedLocationId { get; set; }
+        public DateTime DateTime { get; set; } = DateTime.Now;
+        public Location Location { get; set; }
+    }
+    public class ConfirmationPageModel
+    {
+        public string Ssn { get; set; }
+        public Guid SelectedLocationId { get; set; }
+        public DateTime DateTime { get; set; } = DateTime.Now;
     }
 }
