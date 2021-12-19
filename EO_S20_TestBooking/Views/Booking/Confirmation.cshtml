@@ -21,9 +21,9 @@
         </tr>
     </table>
     <input asp-action="Redirection" asp-controller="Booking" 
-           @*asp-route-ssn="@Model.Appointment.Ssn"
-           asp-route-timeofappointment="@Model.Appointment.Date.ToString()"
-           asp-route-locid="@Model.Appointment.LocationId"*@ 
+           asp-route-ssn="@Model.Appointment.Ssn"
+           asp-route-date="@Model.Appointment.Date.ToString()"
+           asp-route-id="@Model.Appointment.LocationId" 
            type="submit" value="Confirm" class="button" />
 </form>
 

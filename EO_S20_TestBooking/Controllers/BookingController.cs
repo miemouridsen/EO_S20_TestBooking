@@ -12,10 +12,7 @@ namespace EO_S20_TestBooking.Controllers
     public class BookingController : Controller
     {
         private readonly IBookingService _bookingService;
-        public string Ssn { get; set; } = "0000000000";
-        public Location SelectedLocation { get; set; } = new();
-        public DateTime SelectedDate { get; set; } = new();
-
+        
         public BookingController(IBookingService bookingService)
         {
             _bookingService = bookingService;
@@ -25,21 +22,23 @@ namespace EO_S20_TestBooking.Controllers
             return View(model);
         }
 
-        public async Task<IActionResult> TestCenters(LocationPageModel model)
+        public async Task<IActionResult> TestCenters(string ssn, LocationPageModel model)
         {
-            var ssn = model.Ssn;
-            Ssn = ssn;
+            model.Ssn = ssn;
             List<Location> testCenters = await _bookingService.GetAllLocations();
             model.Locations = testCenters;
 
             return View(model);
         }
 
-        public async Task<IActionResult> AvailableTimes(Guid id, AvailableTimesPageModel model)
+        //SSN er null her af en eller anden grund
+        public async Task<IActionResult> AvailableTimes(string ssn, Guid id, AvailableTimesPageModel model)
         {
-            SelectedLocation = await _bookingService.GetLocation(id);
-            List<DateTime> availableTimes = SelectedLocation.AvailableTimes.ToList();
+            model.Ssn = ssn;
+            model.LocationId = id;
             List<Appointment> appointments = await _bookingService.GetAppointments(id);
+            Location location = await _bookingService.GetLocation(id);
+            List<DateTime> availableTimes = location.AvailableTimes.ToList();
 
             if (appointments.Count > 0)
             {
@@ -55,33 +54,25 @@ namespace EO_S20_TestBooking.Controllers
             return View(model);
         }
 
-        //Virker ikke pga. alt er null
-        public IActionResult Confirmation(AppointmentConfirmationPageModel model)
+        public async Task<IActionResult> Confirmation(string ssn, Guid id, string date, AppointmentConfirmationPageModel model)
         {
-            SelectedDate.AddYears(model.Date.Year);
-            SelectedDate.AddMonths(model.Date.Month);
-            SelectedDate.AddDays(model.Date.Day);
-            SelectedDate.AddHours(model.Time.Hour);
-            SelectedDate.AddMinutes(model.Time.Minute);
-
-            //model.Appointment.Id = Guid.NewGuid();
-            model.Appointment.Ssn = Ssn;
-            model.Appointment.Location = SelectedLocation;
-            // If argument exception, pass string and parse to date
-            model.Appointment.Date = SelectedDate;
+            model.Appointment.Ssn = ssn;
+            model.Appointment.Location = await _bookingService.GetLocation(id);
+            model.Appointment.Date = DateTime.Parse(date);
             
             return View(model);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Redirection()
+        public async Task<IActionResult> Redirection(string ssn, Guid id, string date)
         {
             var appointment = new Appointment();
             appointment.Id = Guid.NewGuid();
-            appointment.Ssn = Ssn;
-            appointment.Date = SelectedDate;
-            appointment.LocationId = SelectedLocation.Id;
+            appointment.Ssn = ssn;
+            appointment.Date = DateTime.Parse(date);
+            appointment.LocationId = id;
             int i = await _bookingService.MakeAppointment(appointment);
+
             return Redirect("/Home/Index");
         }
     }
