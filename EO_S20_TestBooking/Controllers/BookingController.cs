@@ -68,7 +68,7 @@ namespace EO_S20_TestBooking.Controllers
             var appointment = new Appointment();
             appointment.Id = Guid.NewGuid();
             appointment.Ssn = model.Ssn;
-            appointment.Date = model.DateTime;
+            appointment.Date = model.SelectedAppointment;
             appointment.LocationId = model.SelectedLocationId;
             int i = await _bookingService.MakeAppointment(appointment);
 

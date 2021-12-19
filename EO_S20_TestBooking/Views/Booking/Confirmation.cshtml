@@ -13,7 +13,7 @@
         </tr>
         <tr>
             <th>Date and time:</th>
-            <td>@Model.DateTime.ToString()</td>
+            <td>@Model.SelectedAppointment.ToString()</td>
         </tr>
         <tr>
             <th>Address of test center:</th>
@@ -24,7 +24,7 @@
            type="submit" value="Confirm" class="button" />
     <input asp-for="SelectedLocationId" type="hidden" />
     <input asp-for="Ssn" type="hidden" />
-    <input asp-for="DateTime" type="hidden" />
+    <input asp-for="SelectedAppointment" type="hidden" />
 </form>
 
 <a asp-action="Index" asp-controller="Home" class="button">Cancel booking</a>

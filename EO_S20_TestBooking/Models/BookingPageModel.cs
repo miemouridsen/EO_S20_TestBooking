@@ -21,20 +21,20 @@ namespace EO_S20_TestBooking.Models
         public Guid SelectedLocationId { get; set; }
         public DateTime Date { get; set; } = DateTime.Now;
 
-        public DateTime DateTime { get; set; } = DateTime.Now;
+        public DateTime SelectedAppointment { get; set; } = DateTime.Now;
         public List<DateTime> AvailableTimes { get; set; }
     }
     public class AppointmentPageModel
     {
         public string Ssn { get; set; }
         public Guid SelectedLocationId { get; set; }
-        public DateTime DateTime { get; set; } = DateTime.Now;
+        public DateTime SelectedAppointment { get; set; } = DateTime.Now;
         public Location Location { get; set; }
     }
     public class ConfirmationPageModel
     {
         public string Ssn { get; set; }
         public Guid SelectedLocationId { get; set; }
-        public DateTime DateTime { get; set; } = DateTime.Now;
+        public DateTime SelectedAppointment { get; set; } = DateTime.Now;
     }
 }

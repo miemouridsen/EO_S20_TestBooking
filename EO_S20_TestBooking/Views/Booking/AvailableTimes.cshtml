@@ -19,10 +19,9 @@
             {
                 <tr>
                     <td>
-                        <input id="timeButton" asp-action="Confirmation" asp-controller="Booking" type="submit" value="@availableTime.ToShortTimeString()" class="button" />
+                        <input id="timeButton" asp-for="SelectedAppointment" asp-action="Confirmation" asp-controller="Booking" type="submit" value="@availableTime.ToShortTimeString()" class="button" />
                         <input asp-for="SelectedLocationId" type="hidden" />
                         <input asp-for="Ssn" type="hidden" />
-                        <input asp-for="DateTime" type="hidden" value="@availableTime"/>
                     </td>   
                 </tr>
             }
