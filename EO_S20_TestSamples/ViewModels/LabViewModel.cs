@@ -108,7 +108,7 @@ namespace EO_S20_TestSamples.ViewModels
         {
             PatientTest pt = Tests[CurrentIndex];
             ((App)App.Current).PatientTest = pt;
-            _dialogService.ShowDialog("TestResult", null, r =>
+            _dialogService.Show("TestResult", null, r =>
             {
                 if (r.Result == ButtonResult.OK)
                 {
